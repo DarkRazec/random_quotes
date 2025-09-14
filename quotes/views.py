@@ -85,7 +85,7 @@ class QuoteCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.save()
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
