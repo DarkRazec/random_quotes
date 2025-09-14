@@ -1,0 +1,13 @@
+[data-bs-theme=dark] {
+    --bs-body-bg: #0e0e10;
+    .card {
+        background-color: #1c1c1c;
+        border: 1px solid #333;
+    }
+    .form-control {
+        background-color: #2f2f31;
+    }
+    .form-select {
+        background-color: #2f2f31;
+    }
+}

@@ -1,0 +1,36 @@
+.stats-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    font-size: 16px;
+}
+
+.view-count {
+
+    margin-right: 20px;
+    user-select: none;
+}
+
+.like-form {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+}
+
+.like-form button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 6px;
+}
+
+.card-body .edit-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    font-size: 1.2em;
+    color: gray;
+}

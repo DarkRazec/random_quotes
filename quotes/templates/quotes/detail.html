@@ -1,0 +1,39 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}?<?=filemtime('css/detail.css');?>">
+</head>
+<div class="row mb-3">
+    <div class="card mb-1 box-shadow text-center">
+        <div class="card-body">
+            {% if object.author == request.user or user.is_superuser %}
+            <a class="edit-btn" title="Изменить" aria-label="Изменить вес цитаты" href="{% url 'quotes:update' object.pk %}">✏️</a>
+            {% endif %}
+            <h2>
+                "{{ object.content }}" - {{ object.source }}
+            </h2>
+        </div>
+    </div>
+    <div class="stats-row mb-3">
+        <img src="{% static 'images/eye.svg' %}" alt="Просмотры">
+        <span>{{ object.viewed.count }}</span>
+        <form method="post" class="like-form">
+            {% csrf_token %}
+            <button class="btn btn-outline-success" name="value" value="1" type="submit">
+                <img src="{% static 'images/like.svg' %}">
+                <span>{{ object.likes.count }}</span>
+            </button>
+            <button class="btn btn-outline-danger" name="value" value="-1" type="submit">
+                <img src="{% static 'images/dislike.svg' %}">
+                <span>{{ object.dislikes.count }}</span>
+            </button>
+        </form>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:homepage'%}">« На главную</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:detail' pk=next_quote_id %}">Случайная цитата »</a>
+    </div>
+</div>
+{% endblock %}

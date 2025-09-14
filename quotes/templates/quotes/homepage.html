@@ -1,0 +1,20 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row text-center mb-5">
+    <h4>Приложение, предназначенное для отображения цитат из какого-либо источника</h4>
+</div>
+<div class="row mb-3 justify-content-center">
+    {% if quote_id %}
+    <div class="btn-group">
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:detail' pk=quote_id %}">Случайная цитата</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:list' %}">Посмотреть все цитаты</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:create' %}">Добавить цитату</a>
+        {% else %}
+        <h2 class="text-center w-100 mb-3">Цитат нет</h2>
+        <a class="btn btn-primary btn-lg" href="{% url 'quotes:create' %}">Добавить цитату</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
